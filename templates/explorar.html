@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Explorar{% endblock title %}
+{% block content %}
+            <div id="main-wrapper">
+                <div id="mw-top">
+                    <div class="container">
+                        <div class="mwt-content">
+                            <div class="mwh-logo">
+                                <a href="/" class="mwh-logo-div">
+                                    <img src="/images/logo.png" alt="9anime">
+                                </a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div id="xsearch" class="home-search">
+                                <div class="search-content">
+                                    <form action="/search" autocomplete="off" id="search-form">
+                                        <div class="search-submit">
+                                            <div class="search-icon btn-search">
+                                                <i class="fa fa-search"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control search-input" name="keyword" placeholder="Enter anime name...">
+                                    </form>
+                                </div>
+                                <div class="description text-center mb-3">9anime.to - Just a better place to watch anime online
+                            for free!
+                        </div>
+                                <div class="show-share">
+                                    <div class="sharethis-inline-share-buttons"></div>
+                                </div>
+                                <div class="mw-buttons text-center">
+                                    <div class="block mb-2">
+                                        <a target="_blank" href="https://twitter.com/9Animevc" class="btn btn-highlight">
+                                            <i class="fab fa-twitter"></i>
+                                            Connect with us on twitter
+                                        </a>
+                                    </div>
+                                    <div class="block">
+                                        <a href="/home" class="btn btn-lg btn-focus more-padding">Go to home
+                                    page</a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock content %}
