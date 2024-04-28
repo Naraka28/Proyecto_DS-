@@ -1,7 +1,7 @@
 import csv
 from datetime import datetime
 from Revista import Revista
-
+import re
 
 def carga_csv(nombre_archivo:str)->list:
     '''
@@ -40,11 +40,15 @@ def Diccionario_Revistas_Por_Cada_Palabra(lista_Revista:list[Revista])->dict:
         revista=dict(revista)
         titulo=revista["titulo"]
         splitteado=titulo.split()
-        for i in range(len(splitteado)):
-            if splitteado[i] in diccionario:
-                diccionario[splitteado[i]].append(revista)
+        for palabra in splitteado:
+            
+            palabra_limpia = re.sub(r'[^a-zA-Z0-9]', '', palabra).lower()
+            print(palabra_limpia)
+            
+            if palabra_limpia in diccionario:
+                diccionario[palabra_limpia].append(revista)
             else:
-                diccionario[splitteado[i]]=[revista]
+                diccionario[palabra_limpia]=[revista]
     return diccionario
 
 def crear_diccionario_por_pais(lista_Revista)->dict:
@@ -60,10 +64,12 @@ def crear_diccionario_por_pais(lista_Revista)->dict:
 
 
 def Buscar_Revista(diccionario:dict, palabra:str)->list:
+    lista=[]
     if palabra in diccionario:
        print("\n Revistas encontradas: ")
        for revista in diccionario[palabra]:
-           print(f"{revista}")
+            print(f"{revista}")
+            lista.append(revista)
    #no esta terminada
 
 
@@ -75,6 +81,8 @@ if __name__ == '__main__':
     diccionario_pais=crear_diccionario_por_pais(catalogo)
     diccionario_alfabetico=crea_diccionario_alfabetico(catalogo) #los values del diccionario son listas de revistas
 
-    for k,v in diccionario_pais.items():
-        print(f"{k} : {v}")
+    for k,v in diccionario_revistas.items():
+       # print(f"{k} : {v}")
         print("\n")
+    print("buscar revistas")
+    Buscar_Revista(diccionario_revistas,"space")
