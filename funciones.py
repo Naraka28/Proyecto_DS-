@@ -81,15 +81,19 @@ def unir_diccionarios(dict_letras:dict, dict_palabras:dict)->dict:
             else:
                 d[letra].append(v)
     d={k: v for k, v in sorted(d.items(), key=lambda item: item[0])}
-    return d
+    return d #nos devuelve un diccionario de listas de diccionarios :P
 
 
 if __name__ == '__main__':
     archivo = 'revistas.csv'
     catalogo = carga_csv(archivo)
     diccionario_revistas=Diccionario_Revistas_Por_Cada_Palabra(catalogo)
+    for k,v in diccionario_revistas.items():
+        print(f"{k}\n:{v}\n")
+       
     diccionario_revistas_titulos=crea_diccionario_revistas_por_cada_titulo(catalogo)
     diccionario_pais=crear_diccionario_por_pais(catalogo)
     diccionario_alfabetico=crea_diccionario_alfabetico(catalogo) #los values del diccionario son listas de revistas
+    for k,v in diccionario_alfabetico.items():
+        print(f"{k}\n:{v}\n")
     dict_unido=unir_diccionarios(diccionario_alfabetico,diccionario_revistas)
-    
