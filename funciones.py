@@ -70,16 +70,17 @@ def Buscar_Revista(diccionario:dict, palabra:str)->list:
             lista.append(revista)
     return lista
 
-def unir_diccionarios(dict_letras:dict, dict_palabras:dict)->dict:
+def diccionario_de_palabras_por_letras( dict_palabras:dict)->dict:
     # buscamos que los diccionarios de palabras esten dentro de las keys de cada letra
     d={}	
     for k,v in dict_palabras.items():
         letra=k[0].upper()
-        if letra in dict_letras:
-            if letra not in d:
-                d[letra]=[v]
-            else:
-                d[letra].append(v)
+    
+        if letra not in d:
+            d[letra]=[v]
+        else:
+            d[letra].append(v)
+        
     d={k: v for k, v in sorted(d.items(), key=lambda item: item[0])}
     return d #nos devuelve un diccionario de listas de diccionarios :P
 
@@ -96,4 +97,6 @@ if __name__ == '__main__':
     diccionario_alfabetico=crea_diccionario_alfabetico(catalogo) #los values del diccionario son listas de revistas
     for k,v in diccionario_alfabetico.items():
         print(f"{k}\n:{v}\n")
-    dict_unido=unir_diccionarios(diccionario_alfabetico,diccionario_revistas)
+    dict_unido=diccionario_de_palabras_por_letras(diccionario_revistas)
+    for k,v in dict_unido.items():
+        print(f"{k}\n:{v}\n")   
