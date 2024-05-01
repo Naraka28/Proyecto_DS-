@@ -43,7 +43,6 @@ def Diccionario_Revistas_Por_Cada_Palabra(lista_Revista:list[Revista])->dict:
         for palabra in splitteado:
             
             palabra_limpia = re.sub(r'[^a-zA-Z0-9]', '', palabra).lower()
-            print(palabra_limpia)
             
             if palabra_limpia in diccionario:
                 diccionario[palabra_limpia].append(revista)
