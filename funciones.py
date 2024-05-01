@@ -37,7 +37,7 @@ def crea_diccionario_alfabetico(lista_revistas:list)->dict:
 def Diccionario_Revistas_Por_Cada_Palabra(lista_Revista:list[Revista])->dict:
     diccionario={}
     for revista in lista_Revista:
-        revista=dict(revista)
+        #revista=dict(revista)
         titulo=revista["titulo"]
         splitteado=titulo.split()
         for palabra in splitteado: 
@@ -92,11 +92,11 @@ if __name__ == '__main__':
     for k,v in diccionario_revistas.items():
         print(f"{k}\n:{v}\n")
        
-    diccionario_revistas_titulos=crea_diccionario_revistas_por_cada_titulo(catalogo)
-    diccionario_pais=crear_diccionario_por_pais(catalogo)
-    diccionario_alfabetico=crea_diccionario_alfabetico(catalogo) #los values del diccionario son listas de revistas
-    for k,v in diccionario_alfabetico.items():
-        print(f"{k}\n:{v}\n")
-    dict_unido=diccionario_de_palabras_por_letras(diccionario_revistas)
-    for k,v in dict_unido.items():
-        print(f"{k}\n:{v}\n")   
+    # diccionario_revistas_titulos=crea_diccionario_revistas_por_cada_titulo(catalogo)
+    # diccionario_pais=crear_diccionario_por_pais(catalogo)
+    # diccionario_alfabetico=crea_diccionario_alfabetico(catalogo) #los values del diccionario son listas de revistas
+    # for k,v in diccionario_alfabetico.items():
+    #     print(f"{k}\n:{v}\n")
+    # dict_unido=diccionario_de_palabras_por_letras(diccionario_revistas)
+    # for k,v in dict_unido.items():
+    #     print(f"{k}\n:{v}\n")   

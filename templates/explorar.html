@@ -1,41 +1,18 @@
 {% extends "base.html" %}
 {% block title %}Explorar{% endblock title %}
-{# {% block content %}
-            <div id="main-wrapper">
-                <div id="mw-top">
-                    <div class="container">
-                        <div class="mwt-content">
-                            <div class="mwh-logo">
-                                <a href="/" class="mwh-logo-div">
-                                    <img src="/images/logo.png" alt="9anime">
-                                </a>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div id="xsearch" class="home-search">
-                                <div class="search-content">
-                                    <form action="/search" autocomplete="off" id="search-form">
-                                        <div class="search-submit">
-                                            <div class="search-icon btn-search">
-                                                <i class="fa fa-search"></i>
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control search-input" name="keyword" placeholder="Enter anime name...">
-                                    </form>
-                                </div>
-                                <div class="description text-center mb-3">9anime.to - Just a better place to watch anime online
-                            for free!
-                        </div>
-                                <div class="show-share">
-                                    <div class="sharethis-inline-share-buttons"></div>
-                                </div>
-                                <div class="mw-buttons text-center">
-                                    <div class="block">
-                                        <a href="/home" class="btn btn-lg btn-focus more-padding">Go to homepage</a>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-{% endblock content %} #}
+{% block content %}
+<div class="flex justify-center">
+    <div class="flex justify-evenly w-6/12">
+        {% for letra in lista_abcdario %}
+        <div>
+            <a href="{{ url_for('explorar_letra',letra=letra)}}" class="text-sm font-semibold leading-6 text-gray-900">{{letra}}</a>
+        </div>
+        
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

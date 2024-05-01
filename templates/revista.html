@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} {{revista['titulo']}} {% endblock title  %}
+{% block content %}
+
+{% for k in revista.keys()  %}
+    {% if loop.last  %}
+    {{revista[k] | safe}}
+    {% else %}
+    <h3>{{revista[k]}} </h3>
+    {% endif %}
+
+{% endfor %}
+
+{% endblock content %}
