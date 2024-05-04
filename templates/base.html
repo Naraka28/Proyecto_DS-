@@ -20,10 +20,14 @@
         <a href="{{url_for('explorar')}}" class="text-sm font-semibold leading-6 text-gray-900">Explore</a>
         <a href="{{url_for('about')}}" class="text-sm font-semibold leading-6 text-gray-900">About</a>
     </div>
-    <div class="w-96  rounded bg-white hidden lg:flex lg:flex-1 lg:justify-end">
-        <input type="search" name="search" id="search" placeholder="Search" class="border-none bg-transparent px-4 py-1 text-gray-900 outline-black">
-        <button class=" m-2 rounded bg-teal-800 px-4 py-2 text-white">Search</button>
-    </div>
+    <form action="{{url_for('search')}}" method="POST" class="w-96 rounded bg-white hidden lg:flex lg:flex-1 lg:justify-end">
+          {{form.hidden_tag()}}
+          {# <input type="search" name="search" id="search" placeholder="Search" class="border-none bg-transparent px-4 py-1 text-gray-900 outline-black">
+          <button class=" m-2 rounded bg-teal-800 px-4 py-2 text-white" type="submit">Search</button> #}
+
+          {{form.search(class = 'border-none bg-transparent px-4 py-1 text-gray-900 outline-black', placeholder = 'Search')}}
+          {{form.submit( class = 'm-2 rounded bg-teal-800 px-4 py-2 text-white' )}}
+    </form>
   </nav>
 </header>
 {% block content %}{% endblock content %}

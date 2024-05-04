@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="font-sans text-3xl">Searched for: {{key}} </h2>
+{% for revista in lista_revistas %}
+    <p>{{revista['titulo']}}</p>
+
+{% endfor %}
+
+{% endblock content %}

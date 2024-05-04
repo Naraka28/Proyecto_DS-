@@ -1,9 +1,13 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, redirect
 from funciones import carga_csv, crea_diccionario_revistas_por_cada_titulo, Diccionario_Revistas_Por_Cada_Palabra, crea_diccionario_alfabetico
+from config import Config
+from forms import SearchForm
 
 
 archivo = 'revistas.csv'
 app = Flask(__name__)
+app.config.from_object(Config)
+
 catalogo = carga_csv(archivo)
 diccionario_revistas_titulo = crea_diccionario_revistas_por_cada_titulo(catalogo)
 diccionario_revistas = Diccionario_Revistas_Por_Cada_Palabra(catalogo) # ahi vemos cual usar
@@ -15,6 +19,23 @@ dicc_letras = crea_diccionario_alfabetico(catalogo)
 @app.route("/")
 def index():
     return render_template("index.html")
+
+#pasar el form al template base.html
+@app.context_processor
+def base():
+    form = SearchForm()
+    return dict(form = form)
+
+@app.route("/search", methods= ['GET', 'POST'])
+def search():
+    form = SearchForm()
+    key = form.search.data
+    key = key.lower().strip()
+    if key  in diccionario_revistas:
+        lista_revistas = diccionario_revistas[key]
+        if form.validate_on_submit():
+            return render_template('search.html', form = form, lista_revistas = lista_revistas)
+    return redirect(url_for('index'))
 
 
 @app.route("/about")
