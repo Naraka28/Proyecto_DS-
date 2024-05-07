@@ -61,6 +61,8 @@ def main2():
                     total_citas = col.text
                 if i == 12:
                     pais = col.img['title']
+                    pais+=f",{col.img['src']}"
+                    #el pais se guarda con el nombre y la url de la bandera separados por una coma
                 i += 1
             r = Revista(titulo,catalogo,sjr,q,h_index,total_citas,url_revista,pais)
             lista_revistas.append(r)
@@ -106,8 +108,6 @@ def area_and_categories_magazine(div)->str:
            texto+= f"{category};"
         texto += '+'
          # split en + para separar las areas y luego split en : para separar las areas de las categorias y split en ; para separar las categorias en sí
-
-    print(texto)
     return texto
 
 

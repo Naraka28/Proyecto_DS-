@@ -59,7 +59,8 @@ def explorar_letra(letra:str):
 def revista(id):
     if id in diccionario_revistas_titulo:
         revista = diccionario_revistas_titulo[id]
-        return render_template("revista.html", revista=revista)
+        area_dict=eval(revista['area'])
+        return render_template("revista.html", revista=revista, area_dict=area_dict)
 
     return render_template("revista.html", id=id)
 
