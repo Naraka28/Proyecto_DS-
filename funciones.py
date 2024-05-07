@@ -12,6 +12,7 @@ def carga_csv(nombre_archivo:str)->list:
         lista = list(csv.DictReader(archivo))
     return lista
 
+
 def crea_diccionario_revistas_por_cada_titulo(lista_revistas:list)->dict:
     ''' Crea diccionario de revistas a partir de 
         la lista de revistas

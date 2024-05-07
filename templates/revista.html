@@ -2,13 +2,143 @@
 {% block title %} {{revista['titulo']}} {% endblock title  %}
 {% block content %}
 
-{% for k in revista.keys()  %}
+
+{% block body%}
+<div class="flex justify-center">
+    <div class="max-w-7xl bg-white shadow-lg rounded-lg overflow-hidden">
+        <table class="table-fixed w-full">
+            <tbody>
+                <!-- Primera fila -->
+                <tr>
+                    <td class="w-1/3 p-4">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow">
+                            <div class="font-bold">Title</div>
+                            <div>{{ revista['titulo'] }}</div>
+                        </div>
+                    </td>
+                    <td class="w-1/3 p-4">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow">
+                            <div class="font-bold">Catalogue</div>
+                            <div>{{ revista['catalogo'] }}</div>
+                        </div>
+                    </td>
+                    <td class="w-1/3 p-4">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow">
+                            <div class="font-bold">SJR</div>
+                            {% if revista['sjr'] %}
+                                <div>{{ revista['sjr'] }}</div>
+                            {% else %}
+                                <div>Not Available</div>
+                            {% endif %}
+                        </div>
+                    </td>
+                    
+                </tr>
+                <!-- Segunda fila -->
+                <tr>
+                    <td class="w-1/3 p-4">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow">
+                            <div class="font-bold">Quartile</div>
+                            {% if revista['q'] %}
+                                <div>{{ revista['q'] }}</div>
+                            {% else %}
+                                <div>Not Available</div>
+                            {% endif %}
+                            
+                        </div>
+                    </td>
+                    <td class="w-1/3 p-4">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow">
+                            <div class="font-bold">H Index</div>
+                            <div>{{ revista['h_index'] }}</div>
+                        </div>
+                    </td>
+                    <td class="w-1/3 p-4">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow">
+                            <div class="font-bold">Total Cites</div>
+                            <div>{{ revista['total_citas'] }}</div>
+                        </div>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td class="w-1/3 p-4">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow">
+                            <div class="font-bold">ISSN</div>
+                            <div>{{ revista['issn'] }}</div>
+                        </div>
+                    </td>
+                    <td class="w-1/3 p-4">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow">
+                            <div class="font-bold">Country</div>
+                            <div>{{ revista['pais'].split(',')[0] }}<img src="{{revista['pais'].split(',')[1]}}"></div>
+                        </div>
+                    </td>
+                    <td class="w-1/3 p-4">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow">
+                            <div class="font-bold">Publisher</div>
+                            <div>{{ revista['publisher'] }}</div>
+                        </div>
+                    </td>
+                    
+                    
+                    <tr>
+                <!-- Tercera fila -->
+                <tr >
+                    <td class="w-1/3 p-4 ">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow h-full ">
+                            <div class="font-bold">Sitio Oficial</div>
+                            <div>
+                                <a href="{{ revista['url_revista'] }}" class="text-blue-500 hover:text-blue-800 " target="_blank">Visitar revista</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="w-1/3  p-4" colspan="1">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow h-full ">
+                            <div class="font-bold ">Areas and Categories</div>
+                            <div>
+                                {% for area in area_dict %}
+                                <p class="text-black-600 pr-3 indent-3 "> •     {{ area }} </p>
+                                    {%for categ in area_dict[area]%}
+                                        <p class="text-gray-800 indent-10"> - {{  categ }}</p>
+                                    {%endfor%}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </td>
+
+                    
+                    <td class="w-1/3 p-5" colspan="2">
+                        <div class="bg-gray-100 p-4 rounded-lg shadow h-full ">
+                            <div class="font-bold">Widget</div>
+                            <div >{{ revista['widget'] | safe }}</div>
+                        </div>
+                    </td>
+                    
+                    
+                    
+                    
+                </tr>
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock%}
+
+
+
+<!--{% for k,v in revista.items()  %}
     {% if loop.last  %}
+        
     {{revista[k] | safe}}
     {% else %}
+
     <h3>{{revista[k]}} </h3>
+    
     {% endif %}
 
-{% endfor %}
+{% endfor %}-->
 
 {% endblock content %}

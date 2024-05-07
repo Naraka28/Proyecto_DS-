@@ -29,10 +29,11 @@ def base():
 @app.route("/search", methods= ['GET', 'POST'])
 def search():
     form = SearchForm()
+    lista_revistas = []
     key = form.search.data
     key = key.lower().strip()
-    if key  in diccionario_revistas:
-        lista_revistas = diccionario_revistas[key]
+    if key in diccionario_revistas:
+        lista_revistas=diccionario_revistas[key]
         if form.validate_on_submit():
             return render_template('search.html', form = form, lista_revistas = lista_revistas, key = key)
     return redirect(url_for('index'))
@@ -58,7 +59,8 @@ def explorar_letra(letra:str):
 def revista(id):
     if id in diccionario_revistas_titulo:
         revista = diccionario_revistas_titulo[id]
-        return render_template("revista.html", revista=revista)
+        area_dict=eval(revista['area'])
+        return render_template("revista.html", revista=revista, area_dict=area_dict)
 
     return render_template("revista.html", id=id)
 

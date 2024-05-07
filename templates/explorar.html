@@ -1,16 +1,97 @@
 {% extends "base.html" %}
 {% block title %}Explorar{% endblock title %}
 {% block content %}
-<div class="flex justify-center">
-    <div class="flex justify-evenly w-6/12">
+<div class="flex justify-center ">
+    <div class="pt-12 flex justify-evenly w-6/12">
         {% for letra in lista_abcdario %}
-        <div>
+        <div >
             <a href="{{ url_for('explorar_letra',letra=letra)}}" class="text-sm font-semibold leading-6 text-gray-900">{{letra}}</a>
         </div>
         
         {% endfor %}
     </div>
+
+   
+
 </div>
+
+
+
+{% block body %}
+<body class="">
+    <div class="flex justify-center pt-16 pb-40 bg-gradient-to-b from-white from-30% via-slate-*  to-slate-300">
+
+        <div class="max-w-7xl bg-white shadow-lg rounded-lg overflow-hidden">
+            <h1 class="text-2xl font-bold text-center pt-6 pb-10">Order By</h1>
+
+            <table class="table-fixed w-full">
+                
+            
+                <tbody>
+                    <!-- Primera fila -->
+                    <tr class="pb-24">
+                        <td class="w-1/3 p-4">
+                            <div class="bg-gray-100 p-4  rounded-lg shadow">
+                                <div class="text-center text-gray-900 font-medium">Title</div>
+                            </div>
+                        </td>
+                        <td class="w-1/3 p-4">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-900 font-medium">Catalogue</div>
+                            </div>
+                        </td>
+                        <td class="w-1/3 p-4">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-900 font-medium ">SJR ↑</div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    <!-- Segunda fila -->
+                    <tr>
+                        <td class="w-1/3 p-4">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-900  ">Quartile ↓</div>
+                            </div>
+                        </td>
+                        <td class="w-1/3 p-4">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-900 ">H Index ↑</div>
+                            </div>
+                        </td>
+                        <td class="w-1/3 p-4">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-900 ">Total Cites ↑</div>
+                            </div>
+                        </td>
+
+                    </tr>
+                    
+                    <tr>
+                        <td class="w-1/3 p-4">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-900 font-medium">Countries</div>
+                            </div>
+                        </td>
+                        <td class="w-1/3 p-4">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-900 font-medium">SJR ↓</div>
+                            </div>
+                        </td>
+                        <td class="w-1/3 p-4">
+                            <div class="bg-gray-100 p-4 rounded-lg shadow">
+                                <div class="text-center text-gray-900 font-medium">H Index ↓</div>
+                            </div>
+                        </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+{% endblock body %}
+
+
+
 
 
 
