@@ -64,6 +64,7 @@ def main2():
                 i += 1
             r = Revista(titulo,catalogo,sjr,q,h_index,total_citas,url_revista,pais)
             lista_revistas.append(r)
+            break
         lista_total.extend(lista_revistas)
     return lista_total
 
@@ -98,7 +99,16 @@ def area_and_categories_magazine(div)->str:
                     dicc[area].append(category)
                 else:
                     dicc[area]=[category]
-    return dicc
+    texto = ''
+    for area in dicc:
+        texto += f"{area}:"
+        for category in dicc[area]:
+           texto+= f"{category};"
+        texto += '+'
+         # split en + para separar las areas y luego split en : para separar las areas de las categorias y split en ; para separar las categorias en sí
+
+    print(texto)
+    return texto
 
 
 
@@ -124,4 +134,4 @@ def guardar_csv(lista:list[Revista]):
 if __name__ == '__main__':
     lista_rev = main2()
     scrap_revista(lista_rev,b_url)
-    guardar_csv(lista_rev)
+

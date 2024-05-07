@@ -29,10 +29,11 @@ def base():
 @app.route("/search", methods= ['GET', 'POST'])
 def search():
     form = SearchForm()
+    lista_revistas = []
     key = form.search.data
     key = key.lower().strip()
-    if key  in diccionario_revistas:
-        lista_revistas = diccionario_revistas[key]
+    if key in diccionario_revistas:
+        lista_revistas=diccionario_revistas[key]
         if form.validate_on_submit():
             return render_template('search.html', form = form, lista_revistas = lista_revistas, key = key)
     return redirect(url_for('index'))

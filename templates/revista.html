@@ -2,13 +2,65 @@
 {% block title %} {{revista['titulo']}} {% endblock title  %}
 {% block content %}
 
-{% for k in revista.keys()  %}
+
+{% block body%}
+<div class="d-flex justify-content-center ">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">{{ revista['titulo'] }}</div>
+            <p class="text-gray-700 text-base">
+                Catalogo: {{ revista['catalogo'] }}
+            </p>
+            <p class="text-gray-700 text-base">
+                SJR: {{ revista['sjr'] }}
+            </p>
+            <p class="text-gray-700 text-base">
+                Q: {{ revista['q'] }}
+            </p>
+            <p class="text-gray-700 text-base">
+                H Index: {{ revista['h_index'] }}
+            </p>
+            <p class="text-gray-700 text-base">
+                Total Citas: {{ revista['total_citas'] }}
+            </p>
+            <p class="text-gray-700 text-base">
+                ISSN: {{ revista['issn'] }}
+            </p>
+            <p class="text-gray-700 text-base">
+                Pais: {{ revista['pais'] }}
+            </p>
+            <p class="text-gray-700 text-base">
+            <!--split en + para separar las areas y luego split en : para separar las areas de las categorias y split en ; para separar las categorias en sí-->
+              <!--  Areas: {{ revista['areas'] }} EN PROCESO -->
+              <!-- TO DO -->
+                
+            </p>
+            <p class="text-gray-700 text-base">
+                Publisher: {{ revista['publisher'] }}
+            </p>
+            <div class="py-4">
+                <a href="{{ revista['url_revista'] }}" class="text-blue-500 hover:text-blue-800">Visitar revista</a>
+            </div>
+        </div>
+        <div class="px-6 pt-4 pb-2">
+            {{ revista['widget'] | safe }}
+        </div>
+    </div>
+</div>
+{% endblock%}
+
+
+
+<!--{% for k,v in revista.items()  %}
     {% if loop.last  %}
+        
     {{revista[k] | safe}}
     {% else %}
+
     <h3>{{revista[k]}} </h3>
+    
     {% endif %}
 
-{% endfor %}
+{% endfor %}-->
 
 {% endblock content %}
