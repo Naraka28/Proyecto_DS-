@@ -101,14 +101,7 @@ def area_and_categories_magazine(div)->str:
                     dicc[area].append(category)
                 else:
                     dicc[area]=[category]
-    texto = ''
-    for area in dicc:
-        texto += f"{area}:"
-        for category in dicc[area]:
-           texto+= f"{category};"
-        texto += '+'
-         # split en + para separar las areas y luego split en : para separar las areas de las categorias y split en ; para separar las categorias en sí
-    return texto
+    return dicc
 
 
 
