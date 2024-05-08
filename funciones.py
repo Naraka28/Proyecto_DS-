@@ -85,14 +85,25 @@ def diccionario_de_palabras_por_letras( dict_palabras:dict)->dict:
     d={k: v for k, v in sorted(d.items(), key=lambda item: item[0])}
     return d #nos devuelve un diccionario de listas de diccionarios :P
 
+def find_keys_containing_substring(dictionary, substring)->dict:
+    matching_keys = {}
+    for key in dictionary.keys():
+        if substring in key:
+            matching_keys[key] = dictionary[key]
+    return matching_keys
 
 if __name__ == '__main__':
     archivo = 'revistas.csv'
     catalogo = carga_csv(archivo)
     diccionario_revistas=Diccionario_Revistas_Por_Cada_Palabra(catalogo)
-    for k,v in diccionario_revistas.items():
-        print(f"{k}\n:{v}\n")
-       
+    # for k,v in diccionario_revistas.items():
+    #     print(f"{k}\n:{v}\n")
+    lista_nueva = find_keys_containing_substring(diccionario_revistas,'atmos')
+    for key in lista_nueva.keys():
+        revistas = lista_nueva[key]
+        for revista in revistas:
+            print(revista['titulo'])
+
     # diccionario_revistas_titulos=crea_diccionario_revistas_por_cada_titulo(catalogo)
     # diccionario_pais=crear_diccionario_por_pais(catalogo)
     # diccionario_alfabetico=crea_diccionario_alfabetico(catalogo) #los values del diccionario son listas de revistas

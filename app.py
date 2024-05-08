@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, redirect
-from funciones import carga_csv, crea_diccionario_revistas_por_cada_titulo, Diccionario_Revistas_Por_Cada_Palabra, crea_diccionario_alfabetico
+from funciones import carga_csv, crea_diccionario_revistas_por_cada_titulo, Diccionario_Revistas_Por_Cada_Palabra, crea_diccionario_alfabetico, find_keys_containing_substring
 from config import Config
 from forms import SearchForm
 
@@ -29,12 +29,14 @@ def base():
 @app.route("/search", methods= ['GET', 'POST'])
 def search():
     form = SearchForm()
-    lista_revistas = []
     key = form.search.data
     key = key.lower().strip()
-    if key in diccionario_revistas:
-        lista_revistas=diccionario_revistas[key]
+    lista_revistas = find_keys_containing_substring(diccionario_revistas, key)
+    print(lista_revistas)
+    if lista_revistas is not None:
+        print(':D')
         if form.validate_on_submit():
+            print('webos')
             return render_template('search.html', form = form, lista_revistas = lista_revistas, key = key)
     return redirect(url_for('index'))
 

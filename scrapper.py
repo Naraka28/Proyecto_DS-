@@ -66,7 +66,6 @@ def main2():
                 i += 1
             r = Revista(titulo,catalogo,sjr,q,h_index,total_citas,url_revista,pais)
             lista_revistas.append(r)
-            break
         lista_total.extend(lista_revistas)
     return lista_total
 
@@ -127,4 +126,5 @@ def guardar_csv(lista:list[Revista]):
 if __name__ == '__main__':
     lista_rev = main2()
     scrap_revista(lista_rev,b_url)
+    guardar_csv(lista_rev)
 
