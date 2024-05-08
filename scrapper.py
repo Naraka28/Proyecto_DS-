@@ -29,8 +29,8 @@ def get_urls(dom,url_list:list)->list:
 
 #Nota mental, si falla en busqueda agregar un strip
 def main2():
-    lista = [base_url_1902]
-    soup = scrap(base_url_1902)
+    lista = [base_url_1706]
+    soup = scrap(base_url_1706)
     urls = get_urls(soup,lista)
     lista_total = []
     print(urls)
@@ -114,7 +114,7 @@ def guardar_JSON(lista: list, nombre_archivo: str):
 def guardar_csv(lista:list[Revista]):
     print('Se esta generando el archivo')
     fields = ['titulo','catalogo','sjr','q','h_index','total_citas','url_revista','pais','area','publisher','issn','widget']
-    with open('revistas.csv', 'w', newline='') as archivo:
+    with open('csv_1706.csv', 'w', newline='') as archivo:
         csv_writer = csv.DictWriter(archivo,fieldnames=fields)
         csv_writer.writeheader()
         for revista in lista:
