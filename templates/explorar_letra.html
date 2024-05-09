@@ -1,24 +1,36 @@
 {% extends "base.html" %}
 {% block title %} Explorar: {{letra}} {% endblock title  %}
 {% block content %}
-<table class="table mb-0">
-    <thead>
+
+<body class="bg-gradient-to-b from-white from-30% via-slate-*  to-slate-300">
+<div class="flex justify-center " >
+<table class="table p-0 px-10">
+    <thead class="p-3">
         <th>Titulo</th>
-        <th>SJR</th>
-        <th>Q</th>
+        
     </thead>
     <tbody>
-        {% for revista in list_revistas %}
-        <tr>
-        <td><a href="{{url_for('revista',id=revista['titulo'])}}">{{revista['titulo']}}</a></td>
-        <td><a href="#" class="link-secondary">{{revista['sjr']}}</a></td>
-        <td>
-            <a href="#" class="link-secondary">{{revista['q']}}
+        {% for dic in dic_revistas %}
+            {% for key in dic.keys() %}
+            <tr>
+            <td>
+                
+                <a href="{{url_for('explorar_palabra', letra = letra,palabra = key)}}">
+                    <div class="bg-gray-100 p-2 rounded-lg shadow">{{key}}
+                {# <td><a href="#" class="link-secondary">{{revista['sjr']}}</a></td>
+                <td>
+                    <a href="#" class="link-secondary">{{revista['q']}} </a> #}
+                
+                </div>
             </a>
-        </td>
-        </tr>
+            </td>
+            </tr>
+            {% endfor %}
+
         {% endfor %}
     </tbody>
 </table>
+</div>
+</body>
 
 {% endblock content %}

@@ -35,6 +35,16 @@ def crea_diccionario_alfabetico(lista_revistas:list)->dict:
     d = {k: v for k, v in sorted(d.items(), key=lambda item: item[0])}
     return d
 
+def explorar_abcedario(dic_por_palabras:dict):
+    d = {}
+    for key,revistas in dic_por_palabras.items():
+        letra = key[0].upper()
+        if letra in d:
+            d[letra].append({key:revistas})
+        else:
+            d[letra] = [{key:revistas}]
+    return d
+
 def Diccionario_Revistas_Por_Cada_Palabra(lista_Revista:list[Revista])->dict:
     diccionario={}
     for revista in lista_Revista:
@@ -98,12 +108,14 @@ if __name__ == '__main__':
     diccionario_revistas=Diccionario_Revistas_Por_Cada_Palabra(catalogo)
     # for k,v in diccionario_revistas.items():
     #     print(f"{k}\n:{v}\n")
-    lista_nueva = find_keys_containing_substring(diccionario_revistas,'atmos')
-    for key in lista_nueva.keys():
-        revistas = lista_nueva[key]
-        for revista in revistas:
-            print(revista['titulo'])
-
+    # lista_nueva = find_keys_containing_substring(diccionario_revistas,'atmos')
+    # for key in lista_nueva.keys():
+    #     revistas = lista_nueva[key]
+    #     for revista in revistas:
+    #         print(revista['titulo'])
+    dic_explorar = explorar_abcedario(diccionario_revistas)
+    for key in dic_explorar.keys():
+        print(f'letra: {key}\n {dic_explorar[key]}')
     # diccionario_revistas_titulos=crea_diccionario_revistas_por_cada_titulo(catalogo)
     # diccionario_pais=crear_diccionario_por_pais(catalogo)
     # diccionario_alfabetico=crea_diccionario_alfabetico(catalogo) #los values del diccionario son listas de revistas
