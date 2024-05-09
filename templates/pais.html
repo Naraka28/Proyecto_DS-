@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Explorar: {{letra}} {% endblock title  %}
+{% block content %}
+{% include "abcdario.html" %}
+<div class="">
+    <h2 class="text-2xl font-semibold text-center pt-6 pb-2">Magazines from  </h2>
+    <!--<h2 class="text-2xl font-bold text-center">{{letra}}</h2>-->
+    <div class="flex justify-center">
+        <div class="w-3/4 bg-white shadow-lg rounded-lg overflow-hidden py-4">
+            <div class="grid grid-cols-4 gap-4 pb-3">
+           
+                {% for key in dic_revistas.keys() %}
+                    <a class="m-3 hover:font-bold active:text-[#D0A738]   hover:text-[#E1B640]" href="{{url_for('explorar_pais', pais = key.split(",")[0] , )}}">
+                        <div class="flex items-center justify-center bg-gray-100 p-2 rounded-lg shadow">{{key.split(",")[0].capitalize()}}</div>
+                    </a>
+                {% endfor %}
+            
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

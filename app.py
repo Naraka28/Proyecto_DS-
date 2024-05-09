@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, redirect
-from funciones import carga_csv, crea_diccionario_revistas_por_cada_titulo, Diccionario_Revistas_Por_Cada_Palabra, crea_diccionario_alfabetico, find_keys_containing_substring, explorar_abcedario
+from funciones import carga_csv, crear_diccionario_por_pais,crea_diccionario_revistas_por_cada_titulo, Diccionario_Revistas_Por_Cada_Palabra, crea_diccionario_alfabetico, find_keys_containing_substring, explorar_abcedario
 from config import Config
 from forms import SearchForm
 
@@ -13,7 +13,7 @@ diccionario_revistas_titulo = crea_diccionario_revistas_por_cada_titulo(catalogo
 diccionario_revistas = Diccionario_Revistas_Por_Cada_Palabra(catalogo) # ahi vemos cual usar
 abcdario = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 dicc_letras = explorar_abcedario(diccionario_revistas)
-
+dicc_paises=crear_diccionario_por_pais(catalogo)
 
 
 @app.route("/")
@@ -72,6 +72,24 @@ def revista(id):
         return render_template("revista.html", revista=revista, area_dict=area_dict, bandera = bandera)
 
     return render_template("revista.html", id=id)
+
+@app.route("/explorar/paises/")
+def pais():
+        
+        revistas = dicc_paises
+        return render_template("pais.html", dic_revistas=revistas)
+    
+@app.route("/explorar/paises/<pais>")
+def explorar_pais(pais:str):
+        for key in dicc_paises.keys():
+            if key.split(",")[0] == pais:
+                revistas = dicc_paises[key]
+                bandera=f"https://www.scimagojr.com/{key.split(',')[1]}"
+        
+                return render_template("explorar_pais.html", pais = pais, revistas=revistas, bandera = bandera)
+        #return render_template("explorar_pais.html", pais = pais)
+       
+    
 
 if __name__ == '__main__':
     app.run(debug=True)

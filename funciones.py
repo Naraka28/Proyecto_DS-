@@ -71,6 +71,7 @@ def crear_diccionario_por_pais(lista_Revista)->dict:
     d = {k: v for k, v in sorted(d.items(), key=lambda item: item[0])}
     return d
 
+ 
 
 def Buscar_Revista(diccionario:dict, palabra:str)->list:
     lista=[]
@@ -113,9 +114,9 @@ if __name__ == '__main__':
     #     revistas = lista_nueva[key]
     #     for revista in revistas:
     #         print(revista['titulo'])
-    dic_explorar = explorar_abcedario(diccionario_revistas)
-    for key in dic_explorar.keys():
-        print(f'letra: {key}\n {dic_explorar[key]}')
+    #dic_explorar = explorar_abcedario(diccionario_revistas)
+    #for key in dic_explorar.keys():
+    #    print(f'letra: {key}\n {dic_explorar[key]}')
     # diccionario_revistas_titulos=crea_diccionario_revistas_por_cada_titulo(catalogo)
     # diccionario_pais=crear_diccionario_por_pais(catalogo)
     # diccionario_alfabetico=crea_diccionario_alfabetico(catalogo) #los values del diccionario son listas de revistas
@@ -124,3 +125,7 @@ if __name__ == '__main__':
     # dict_unido=diccionario_de_palabras_por_letras(diccionario_revistas)
     # for k,v in dict_unido.items():
     #     print(f"{k}\n:{v}\n")   
+    dicc_paises=crear_diccionario_por_pais(catalogo)
+    for k,v in dicc_paises.items():
+        print(f"{k}\n:{v}\n")
+        break

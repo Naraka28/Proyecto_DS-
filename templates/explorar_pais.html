@@ -2,7 +2,15 @@
 {% block title %} Explorar: {{palabra}} {% endblock title  %}
 {% block content %}
 {% include "abcdario.html" %}
+<div class="flex justify-center  py-12">
+    <span class="font-semibold  pt-4 text-3xl text-[#1b3485] mr-2 -m-3"> Magazines from {{ pais.capitalize() }}</span> 
+    <img class="w-9 " src="{{ bandera }}">
+    
+
+</div>
+
 <div class="flex justify-center">
+    
     <table class="w-2/3 divide-y divide-gray-200 shadow-sm my-6">
         <thead class="bg-gray-50 py-3">
             <tr>
@@ -18,7 +26,7 @@
             </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-            {% for revista in list_revistas %}
+            {% for revista in revistas %}
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <a href="{{ url_for('revista', id=revista['titulo']) }}" class="text-base hover:text-blue-700">
