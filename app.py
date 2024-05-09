@@ -24,7 +24,7 @@ def index():
 @app.context_processor
 def base():
     form = SearchForm()
-    return dict(form = form)
+    return dict(form = form,lista_abcdario = abcdario)
 
 @app.route("/search", methods= ['GET', 'POST'])
 def search():
@@ -44,7 +44,7 @@ def about():
 
 @app.route("/explorar")
 def explorar():
-    return render_template("explorar.html", lista_abcdario=abcdario)
+    return render_template("explorar.html")
 
 @app.route("/explorar/<letra>")
 def explorar_letra(letra:str):
@@ -66,7 +66,10 @@ def revista(id):
     if id in diccionario_revistas_titulo:
         revista = diccionario_revistas_titulo[id]
         area_dict=eval(revista['area'])
-        return render_template("revista.html", revista=revista, area_dict=area_dict)
+        bandera=revista['pais'].split(",")[1]
+        bandera=f"https://www.scimagojr.com/{bandera}"
+        
+        return render_template("revista.html", revista=revista, area_dict=area_dict, bandera = bandera)
 
     return render_template("revista.html", id=id)
 

@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2 class="font-sans text-3xl">Searched for: {{key}} </h2>
-{% for key in lista_revistas.keys() %}
-    {% for revista  in lista_revistas[key]  %}
-        <p>{{revista['titulo']}}</p>
-
-    {% endfor %}
-
-{% endfor %}
+<div class="px-20 py-14">
+    <span class="font-semibold  text-3xl text-[#1b3485] mr-2 -m-3"> Results of</span> <span class="font-bold text-3xl text-[#E1B640]">{{ key.capitalize() }}</span>
+    <div class="mt-6 px-10 space-y-4">
+    
+        {% for key in lista_revistas.keys() %}
+            <div>
+                <h3 class=" text-xl pt-5 font-bold underline-offset-4 text-[#496EA5]">{{ key.capitalize() }}</h3>
+                <div class="mt-2 pb-3 mb-3 pl-10 border-l-4 border-[#E1B640] space-y-2">
+                    {% for revista in lista_revistas[key] %}
+                    <a href="{{ url_for('revista', id=revista['titulo']) }}" class="text-lg text-gray-700 transition-colors  hover:text-[#8DA3C9]">
+                        {{ revista['titulo'] }} <br>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock content %}
