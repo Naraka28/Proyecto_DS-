@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Explorar: {{palabra}} {% endblock title  %}
+{% block content %}
+<table class="table mb-0">
+    <thead>
+        <th>Titulo</th>
+        <th>SJR</th>
+        <th>Q</th>
+    </thead>
+    <tbody>
+        {% for revista in list_revistas %}
+            <tr>
+            <td><a href="{{url_for('revista', id=revista['titulo'])}}">{{revista['titulo']}}</a></td>
+            <td><a href="#" class="link-secondary">{{revista['sjr']}}</a></td>
+            <td>
+                <a href="#" class="link-secondary">{{revista['q']}} </a>
+            </td>
+            </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
