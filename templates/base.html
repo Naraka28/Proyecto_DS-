@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/styles.css') }}">
     <title>{% block title %}Home{% endblock title %}</title>
 </head>
-<body class="" >
+<body class="flex flex-col min-h-screen">
 <header class="bg-[#20305A]">
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
@@ -22,7 +22,7 @@
     </div>
     <form action="{{url_for('search')}}" method="POST" class="w-96 rounded bg-[#20305A] hidden lg:flex lg:flex-1 lg:justify-end">
           {{form.hidden_tag()}}
-         
+
           <p>
           {{form.search(class = 'rounded bg-WHITE px-4 py-1 text-gray-900 outline-black', placeholder = 'Search')}}
           {{form.submit( class = 'm-2 rounded bg-[#E1B640] px-4 py-2 text-white hover:bg-[#FFD667] active:bg-[#E1B640] focus:outline-none focus:ring  cursor-pointer' )}}
@@ -30,12 +30,12 @@
     </form>
   </nav>
 </header>
-<main class="py-5 bg-gradient-to-b from-white from-30% via-[#f1f1f1] via-80% to-[#C5C5C5]">
+<main class="items-center py-5 bg-gradient-to-b from-white from-30% via-[#f1f1f1] via-80% to-[#C5C5C5] my-auto">
   {% block content %}
   {% endblock content %}
 </main>
-<footer class="bg-gray-800 text-white py-6">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between px-4">
+<footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between px-2">
         <!-- Footer Section 1 -->
         <div class="mb-4 md:mb-0">
             <h3 class="text-lg font-bold">Section 1</h3>

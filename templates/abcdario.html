@@ -1,0 +1,9 @@
+<div class="flex justify-center pt-8">
+    <div class="flex justify-evenly w-6/12">
+        {% for letra in lista_abcdario %}
+        <div>
+            <a href="{{ url_for('explorar_letra',letra=letra)}}" class="text-lg font-semibold leading-6 text-[#1B3485] hover:font-bold active:text-[#FFEAB1]   hover:text-[#E1B640]">{{letra}}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
