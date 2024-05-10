@@ -88,7 +88,7 @@ def revista(id):
         
         return render_template("revista.html", revista=revista, area_dict=area_dict, bandera = bandera)
 
-    return render_template("revista.html", id=id)
+    return render_template("error.html", id=id)
 
 @app.route("/explorar/paises/")
 def pais():
