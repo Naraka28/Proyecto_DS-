@@ -24,17 +24,17 @@
           {{form.hidden_tag()}}
 
           <p>
-          {{form.search(class = 'rounded bg-WHITE px-4 py-1 text-gray-900 outline-black', placeholder = 'Find a magazine...')}}
+          {{form.search(class = 'rounded bg-WHITE px-4 py-1 text-gray-900 outline-black', placeholder = 'Search')}}
           {{form.submit( class = 'm-2 rounded bg-[#E1B640] px-4 py-2 text-white hover:bg-[#FFD667] active:bg-[#E1B640] focus:outline-none focus:ring  cursor-pointer' )}}
           </p>
     </form>
   </nav>
 </header>
-<main class="items-center py-5 bg-gradient-to-b from-white from-30% via-[#f1f1f1] via-80% to-[#C5C5C5] my-auto">
+<main class="items-center py-5 bg-gradient-to-b from-white from-30% via-[#f1f1f1] via-80% to-[#C5C5C5] mb-auto">
   {% block content %}
   {% endblock content %}
 </main>
-<footer class="bg-gray-800 text-white py-12">
+<footer class="bg-[#20305A] text-white py-12">
     <div class="container mx-auto flex flex-col md:flex-row justify-between px-2">
         <!-- Footer Section 1 -->
         <div class="mb-4 md:mb-0">
