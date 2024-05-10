@@ -82,6 +82,10 @@ def Buscar_Revista(diccionario:dict, palabra:str)->list:
             lista.append(revista)
     return lista
 
+def ordenar_por_quartil(lista_revistas:list)->list:
+    lista_revistas.sort(key=lambda revista: revista["q"])
+    return lista_revistas
+
 def diccionario_de_palabras_por_letras( dict_palabras:dict)->dict:
     # buscamos que los diccionarios de palabras esten dentro de las keys de cada letra
     d={}	

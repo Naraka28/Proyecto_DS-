@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, redirect
-from funciones import carga_csv, crear_diccionario_por_pais,crea_diccionario_revistas_por_cada_titulo, Diccionario_Revistas_Por_Cada_Palabra, crea_diccionario_alfabetico, find_keys_containing_substring, explorar_abcedario
+from funciones import carga_csv, ordenar_por_quartil,crear_diccionario_por_pais,crea_diccionario_revistas_por_cada_titulo, Diccionario_Revistas_Por_Cada_Palabra, crea_diccionario_alfabetico, find_keys_containing_substring, explorar_abcedario
 from config import Config
 from forms import SearchForm
 
@@ -14,7 +14,8 @@ diccionario_revistas = Diccionario_Revistas_Por_Cada_Palabra(catalogo) # ahi vem
 abcdario = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
 dicc_letras = explorar_abcedario(diccionario_revistas)
 dicc_paises=crear_diccionario_por_pais(catalogo)
-
+lista_alfab=sorted(catalogo, key=lambda x: x['titulo'])
+lista_quartiles=ordenar_por_quartil(catalogo)
 
 @app.route("/")
 def index():
@@ -52,6 +53,22 @@ def explorar_letra(letra:str):
         revistas = dicc_letras[letra]
         return render_template("explorar_letra.html", letra=letra, dic_revistas=revistas)
     return render_template("explorar_letra.html", letra=letra)
+
+@app.route("/explorar/abc")
+def explorar_alfabeticamente():
+    
+        revistas = lista_alfab
+        print(revistas)
+        return render_template("explorar_alfabetico.html", revistas=revistas)
+
+
+@app.route("/explorar/quartiles")
+def explorar_q():
+    
+        revistas = lista_quartiles
+        print(revistas)
+        return render_template("explorar_Q.html", revistas=revistas)
+  
 
 @app.route("/explorar/<letra>/<palabra>")
 def explorar_palabra(letra:str,palabra:str):
