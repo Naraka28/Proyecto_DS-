@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for, redirect
+#Nombres: Gael Humberto Borchardt Castellanos Daniel Ivan Estrada Neri
+from flask import Flask, render_template, url_for, redirect, request
 from funciones import carga_csv, ordenar_por_quartil,crear_diccionario_por_pais,crea_diccionario_revistas_por_cada_titulo, Diccionario_Revistas_Por_Cada_Palabra, crea_diccionario_alfabetico, find_keys_containing_substring, explorar_abcedario
 from config import Config
 from forms import SearchForm

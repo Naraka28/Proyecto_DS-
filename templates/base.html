@@ -4,61 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
     <title>{% block title %}Home{% endblock title %}</title>
 </head>
-<body class="flex flex-col min-h-screen">
-<header class="bg-[#20305A]">
-  <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-    <div class="flex lg:flex-1">
-      <a href="{{url_for('index')}}" class="-m-1.5 p-1.5">
-       
-        <img class="h-10 w-auto" src="https://alumnos.unison.mx/img/logo_unison.png" alt="">
-      </a>
-    </div>
-    <div class="hidden lg:flex lg:gap-x-12 m-auto">
-        <a href="{{url_for('index')}}" class="text-2xl font-semibold  leading-6 text-white hover:font-bold active:text-[#FFEAB1] hover:text-[#E1B640] ">Home</a>
-        <a href="{{url_for('explorar')}}" class="text-2xl font-semibold leading-6 text-white hover:font-bold active:text-[#FFEAB1] hover:text-[#E1B640]">Explore</a>
-        <a href="{{url_for('about')}}" class="text-2xl font-semibold leading-6 text-white hover:font-bold active:text-[#FFEAB1]   hover:text-[#E1B640]">About</a>
-    </div>
-    <form action="{{url_for('search')}}" method="POST" class="w-96 rounded bg-[#20305A] hidden lg:flex lg:flex-1 lg:justify-end">
-          {{form.hidden_tag()}}
-
-          <p>
-          {{form.search(class = 'rounded bg-WHITE px-4 py-1 text-gray-900 outline-black', placeholder = 'Search')}}
-          {{form.submit( class = 'm-2 rounded bg-[#E1B640] px-4 py-2 text-white hover:bg-[#FFD667] active:bg-[#E1B640] focus:outline-none focus:ring  cursor-pointer' )}}
-          </p>
-    </form>
-  </nav>
-</header>
-<main class="items-center py-5 bg-gradient-to-b from-white from-30% via-[#f1f1f1] via-80% to-[#C5C5C5] mb-auto">
-  {% block content %}
-  {% endblock content %}
-</main>
-<footer class="bg-[#20305A] text-white py-12">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between px-2">
-        <!-- Footer Section 1 -->
-        <div class="mb-4 md:mb-0">
-            <h3 class="text-lg font-bold">Section 1</h3>
-            <ul class="mt-2">
-                <li><a href="#" class="hover:underline">Link 1</a></li>
-                <li><a href="#" class="hover:underline">Link 2</a></li>
-                <li><a href="#" class="hover:underline">Link 3</a></li>
-            </ul>
+<body>
+  <div class="flex flex-col min-h-screen bg-gradient-to-b from-white from-30% via-[#f1f1f1] via-80% to-[#C5C5C5]">
+    <header class="bg-[#20305A]">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+          <a href="{{url_for('index')}}" class="-m-1.5 p-1.5">
+          
+            <img class="h-10 w-auto" src="https://alumnos.unison.mx/img/logo_unison.png" alt="">
+          </a>
         </div>
-
-        <!-- Footer Section 2 -->
-        <div class="mb-4 md:mb-0">
-            <h3 class="text-lg font-bold">Section 2</h3>
-            <p class="mt-2">This is some text in Section 2.</p>
+        <div class="hidden lg:flex lg:gap-x-12 m-auto">
+            <a href="{{url_for('index')}}" class="text-2xl font-semibold  leading-6 text-white hover:font-bold active:text-[#FFEAB1] hover:text-[#E1B640] ">Home</a>
+            <a href="{{url_for('explorar')}}" class="text-2xl font-semibold leading-6 text-white hover:font-bold active:text-[#FFEAB1] hover:text-[#E1B640]">Explore</a>
+            <a href="{{url_for('about')}}" class="text-2xl font-semibold leading-6 text-white hover:font-bold active:text-[#FFEAB1]   hover:text-[#E1B640]">About</a>
         </div>
+        <form action="{{url_for('search')}}" method="POST" class="w-96 rounded bg-[#20305A] hidden lg:flex lg:flex-1 lg:justify-end">
+              {{form.hidden_tag()}}
 
-        <!-- Footer Section 3 -->
-        <div>
-            <h3 class="text-lg font-bold">Section 3</h3>
-            <p class="mt-2">Contact information or social links go here.</p>
+              <p>
+              {{form.search(class = 'rounded bg-WHITE px-4 py-1 text-gray-900 outline-black', placeholder = 'Search')}}
+              {{form.submit( class = 'm-2 rounded bg-[#E1B640] px-4 py-2 text-white hover:bg-[#FFD667] active:bg-[#E1B640] focus:outline-none focus:ring  cursor-pointer' )}}
+              </p>
+        </form>
+      </nav>
+    </header>
+    <main class="py-5">
+      {% block content %}
+      {% endblock content %}
+    </main>
+    
+    <footer class="bg-[#20305A] text-white py-12 mt-auto">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between px-2">
+            <!-- Footer Section 1 -->
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-lg font-bold">Company</h3>
+                <ul class="mt-2">
+                    <li><a href="https://www.unison.mx/" target="_blank" class="hover:underline">Universidad de Sonora</a></li>
+                    <li><a href="{{url_for('explorar')}}" class="hover:underline">Explore</a></li>
+                    <li><a href="{{url_for('about')}}" class="hover:underline">About</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Section 2 -->
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-lg font-bold">Our Social Media</h3>
+                <p class="mt-2">
+                  <i class="ri-facebook-box-line ri-xl mr-1"></i>
+                  <i class="ri-twitter-x-line ri-lg mr-1"></i>
+                  <i class="ri-github-fill ri-xl"></i>
+                </p>
+            </div>
+
+            <!-- Footer Section 3 -->
+            <div>
+                <h3 class="text-lg font-bold">Contact</h3>
+                <p class="mt-2"><i>Hermosillo, Sonora</i></p>
+                <p class="mt-2"><i class="ri-mail-line"> example@hotmail.com</i></p>
+                <i class="ri-phone-line"> (662)123 4567</i>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
+  </div>
 </body>
-</div>
 </html>

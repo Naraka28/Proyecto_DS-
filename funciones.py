@@ -2,6 +2,7 @@ import csv
 from datetime import datetime
 from Revista import Revista
 import re
+#Nombres: Gael Humberto Borchardt Castellanos Daniel Ivan Estrada Neri
 
 def carga_csv(nombre_archivo:str)->list:
     '''
